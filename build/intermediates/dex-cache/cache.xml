@@ -16,13 +16,6 @@
         <dex dex="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\pre-dexed\debug\classes-b9fbb8e70e186efad29793866856ff5b74a0f2f1.jar" />
     </item>
     <item
-        jar="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.0.0\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\pre-dexed\debug\classes-d07eeffd9dc573b21d5e0ecee8f4c018cd9291c6.jar" />
-    </item>
-    <item
         jar="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\exploded-aar\com.android.support\palette-v7\22.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -35,6 +28,13 @@
         revision="22.0.1"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
         <dex dex="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\pre-dexed\debug\classes-306f4effca3192bdfc9bd470da9d09b368fdbf95.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="C:\Users\Jon\AndroidStudioProjects\xyzreader\XYZReader\build\intermediates\pre-dexed\debug\classes-7c95fbc778858d20ad931d6f4a44f735e8432fd5.jar" />
     </item>
     <item
         jar="C:\Users\Jon\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.1.2\7052283359001bb108753cb0583a887d3bf94c82\okhttp-3.1.2.jar"
