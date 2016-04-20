@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.app.ActivityOptions;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,15 +8,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +32,8 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 import com.example.xyzreader.data.UpdaterService;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
  * An activity representing a list of Articles. This activity has different presentations for
@@ -42,16 +50,15 @@ public class ArticleListActivity extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
+
         setContentView(R.layout.activity_article_list);
-
-//        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
 
 //        final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
 
-        ((CollapsingToolbarLayout)findViewById(R.id.toolbar_container)).setTitle("");
+        ((CollapsingToolbarLayout)findViewById(R.id.toolbar_container)).setTitle(getString(R.string.app_name));
         //mCollapsingToolbarLayout.setTitle(getString(R.string.app_name));
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -81,7 +88,6 @@ public class ArticleListActivity extends ActionBarActivity implements
     }
 
     private boolean mIsRefreshing = false;
-    private boolean mIsUpdating = false;
 
     private BroadcastReceiver mRefreshingReceiver = new BroadcastReceiver() {
         @Override
@@ -138,8 +144,20 @@ public class ArticleListActivity extends ActionBarActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        Log.v("ARTICLELIST", view.findViewById(R.id.thumbnail).getTransitionName());
+                        Log.v("ARTICLELIST", String.valueOf(mCursor.getLong(ArticleLoader.Query._ID)));
+                        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
+                                ArticleListActivity.this, view.findViewById(R.id.thumbnail),
+                                view.findViewById(R.id.thumbnail).getTransitionName()).toBundle();
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())))
+                                .putExtra("transition", view.findViewById(R.id.list_card)
+                                        .getTransitionName()), bundle);
+                    } else {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                    }
                 }
             });
             return vh;
@@ -156,10 +174,11 @@ public class ArticleListActivity extends ActionBarActivity implements
                             DateUtils.FORMAT_ABBREV_ALL).toString()
                             + " by "
                             + mCursor.getString(ArticleLoader.Query.AUTHOR));
-            holder.thumbnailView.setImageUrl(
-                    mCursor.getString(ArticleLoader.Query.THUMB_URL),
-                    ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
+            Uri uri = Uri.parse(mCursor.getString(ArticleLoader.Query.THUMB_URL));
             holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+            holder.thumbnailView.setImageURI(uri);
+            holder.thumbnailView.setTransitionName(getString(R.string.transition_image) +
+                position);
         }
 
         @Override
@@ -169,15 +188,17 @@ public class ArticleListActivity extends ActionBarActivity implements
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public DynamicHeightNetworkImageView thumbnailView;
+        public SimpleDraweeView thumbnailView;
         public TextView titleView;
         public TextView subtitleView;
+        public CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
-            thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
+            thumbnailView = (SimpleDraweeView) view.findViewById(R.id.thumbnail);
             titleView = (TextView) view.findViewById(R.id.article_title);
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
+            cardView = (CardView)view.findViewById(R.id.list_card);
         }
     }
 }

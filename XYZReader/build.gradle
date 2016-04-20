@@ -33,5 +33,11 @@ dependencies {
     // Added design support library
     compile 'com.android.support:design:22.2.0'
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    //compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.facebook.fresco:fresco:0.7.0+'
     compile files('libs/volley.jar')
+}
+
+repositories {
+    mavenCentral()
 }

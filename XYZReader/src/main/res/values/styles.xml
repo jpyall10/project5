@@ -20,11 +20,68 @@
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#607D8B</item>
         <item name="colorPrimaryDark">#37474F</item>
-        <item name="colorAccent">#E91E63</item>
+        <item name="colorAccent">#F05321</item>
+
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:toolbarStyle">@style/XYZActionBarStyle</item>
+
+        <item name="android:windowEnterTransition">@transition/grid_exit</item>
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
+        <!--<item name="colorAccent">#E91E63</item>-->
     </style>
 
-    <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    <style name="Theme.Bacon.Detail" parent="@style/Theme.Bacon">
+    </style>
+    <!--<item name="android:toolbarStyle">@style/XYZActionBarStyle</item>-->
+
+
+    <style name="ListCardTitle" parent="@style/TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/primary_text_inverse</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">5</item>
+        <item name="android:shadowDy">5</item>
+        <item name="android:shadowRadius">20</item>
+        <!--<item name="android:textSize">@dimen/list_card_title_text_size</item>-->
+    </style>
+
+    <style name="ListCardSubtitle" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/primary_text_inverse</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">5</item>
+        <item name="android:shadowDy">5</item>
+        <item name="android:shadowRadius">20</item>
+        <!--<item name="android:textSize">@dimen/list_card_subtitle_text_size</item>-->
+    </style>
+
+    <style name="DetailHeadline" parent="@style/TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/theme_primary</item>
+        <!--<item name="android:textSize">@dimen/list_card_title_text_size</item>-->
+    </style>
+
+    <style name="DetailSubtitle" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/theme_light</item>
+        <!--<item name="android:shadowColor">@android:color/black</item>-->
+        <!--<item name="android:shadowDx">5</item>-->
+        <!--<item name="android:shadowDy">5</item>-->
+        <!--<item name="android:shadowRadius">20</item>-->
+        <!--<item name="android:textSize">@dimen/list_card_subtitle_text_size</item>-->
+    </style>
+
+    <style name="DetailBody" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/detail_body_text_size</item>
+
+    </style>
+
+    <style name="DetailTitleExpanded" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/transparent</item>
+    </style>
+
+    <style name="DetailTitleCollapsed" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+    </style>
+
+    <style name="XYZActionBarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/theme_primary</item>
     </style>
 
 </resources>

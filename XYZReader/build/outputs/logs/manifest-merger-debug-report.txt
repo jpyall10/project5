@@ -42,6 +42,8 @@ MERGED from com.android.support:design:22.2.0:22:5
 MERGED from com.android.support:appcompat-v7:22.2.0:22:5
 MERGED from com.android.support:support-v4:22.2.0:22:5
 MERGED from com.android.support:support-v4:22.2.0:22:5
+MERGED from com.android.support:support-v4:22.2.0:22:5
+MERGED from com.android.support:support-v4:22.2.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:14:9
 	android:allowBackup
@@ -122,6 +124,14 @@ MERGED from com.android.support:design:22.2.0:20:5
 MERGED from com.android.support:appcompat-v7:22.2.0:20:5
 MERGED from com.android.support:support-v4:22.2.0:20:5
 MERGED from com.android.support:support-v4:22.2.0:20:5
+MERGED from com.facebook.fresco:fresco:0.7.0:5:5
+MERGED from com.facebook.fresco:imagepipeline:0.7.0:5:5
+MERGED from com.facebook.fresco:fbcore:0.7.0:5:5
+MERGED from com.android.support:support-v4:22.2.0:20:5
+MERGED from com.facebook.fresco:drawee:0.7.0:5:5
+MERGED from com.facebook.fresco:fbcore:0.7.0:5:5
+MERGED from com.android.support:support-v4:22.2.0:20:5
+MERGED from com.facebook.fresco:fbcore:0.7.0:5:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

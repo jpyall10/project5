@@ -18,8 +18,15 @@
 <resources>
     <color name="photo_placeholder">#ccc</color>
 
-    <color name="theme_primary">#F25322</color>
-    <color name="theme_primary_dark">#04561A</color>
-    <color name="theme_accent">#04561A</color>
+    <color name="theme_primary">#607D8B</color>
+    <color name="theme_primary_dark">#37474F</color>
+    <color name="theme_accent">#F05321</color>          <!--Orange-->
+    <color name="theme_light">#90A4AE</color>
+<!--<color name="theme_accent">#F25322</color>-->       <!--Pink-->
+    <color name="primary_text">#000000</color>          <!--Black-->
+    <color name="primary_text_inverse">#FFFFFF</color>  <!--Use with dark background or over image-->
+    <color name="secondary_text">#90A4AE</color>        <!--Same as theme_light-->
+    <color name="transparent">#00ffffff</color>
+
     <color name="ltgray">#ffe0e0e0</color>
 </resources>
